@@ -1,0 +1,48 @@
+
+/* Regles generales */
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+body {
+ 
+  font-size: 1.4rem;            /* 14px par défaut */
+  /*font-family: 'Noto sans', sans-serif;*/
+}
+
+a, a:hover, a:visited{                /* ATTENTION LES LIENS SONT BLANC DANS CE MODELE*/
+  color: #FFF;
+  text-decoration: none;
+}
+img{
+  max-width:100%;
+  height: auto;
+  vertical-align: middle; 
+}
+
+
+/*******************************/
+/* Starter: Prsentation       */
+/*****************************/
+.presentation{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.presentation h1{
+  font-size: 8rem;
+  padding-bottom: 10rem; 
+}
+
+/********************/
+/* HEADER:         */
+/******************/
+
+
+

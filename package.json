@@ -1,0 +1,35 @@
+{
+  "name": "starter-gulp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eslint-config-airbnb": "^18.2.1",
+    "gulp-dart-sass": "^1.0.2",
+    "gulp-minify": "^3.1.0",
+    "gulp-sitemap": "^8.0.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.27.5",
+    "del": "^6.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.24.2",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-imagemin": "^6.1.0",
+    "gulp-plumber": "^1.2.1"
+  },
+  "browserslist": [
+    "last 2 version",
+    "IE 10"
+  ]
+}
