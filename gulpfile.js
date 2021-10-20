@@ -160,15 +160,7 @@ function sitemapGen() {
   );
 }
 
-// Tache permettant d’écouter les modifications en dev
-function watch() {
-  gulp.watch(paths.html.src, htmlDev);
-  gulp.watch(paths.scss.src, scss);
-}
-
-// Idem watch() avec les images en plus pour le build
-function watchFiles() {
-  gulp.watch(paths.html.src, html);
+function watchAll() {
   gulp.watch(paths.scss.src, scss);
   gulp.watch(paths.css.src, css);
   gulp.watch(paths.js.src, js);
@@ -176,16 +168,25 @@ function watchFiles() {
   gulp.watch(paths.images.src, images);
 }
 
+// Tache permettant d’écouter les modifications en dev
+function watch() {
+  gulp.watch(paths.html.src, htmlDev);
+  watchAll();
+}
+
+// Idem watch() avec les images en plus pour le build
+function watchFiles() {
+  gulp.watch(paths.html.src, html);
+  watchAll();
+}
+
 const serie = gulp.series(clear, html, scss, css, js, images, font);
 const build = gulp.series(serie, sitemapGen, gulp.parallel(watchFiles, browserSync));
 
-const dev = gulp.series(scss, gulp.parallel(watch, browserSyncDev));
+const dev = gulp.series(clear, scss, gulp.parallel(watch, browserSyncDev));
 
 // exports
 exports.clear = clear;
-exports.html = html;
-exports.css = css;
-exports.images = images;
 exports.build = build;
 exports.dev = dev;
 exports.default = dev;
