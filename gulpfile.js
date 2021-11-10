@@ -21,7 +21,7 @@ const paths = {
     dest: './dist/',
   },
   css: {
-    src: [`${assetsFolder}css/reset.css`, `${assetsFolder}css/*.css`],
+    src: [`${assetsFolder}css/reset.css`, `${assetsFolder}css/sass.css`, `${assetsFolder}css/*.css`],
     dest: './dist/assets/css/',
   },
   scss: {
@@ -91,6 +91,7 @@ function scss() {
       .src(paths.scss.src)
       .pipe(plumber())
       .pipe(sass())
+      .pipe(concat('sass.css'))
       .pipe(gulp.dest(paths.scss.dest))
       .pipe(browsersync.stream())
   );
