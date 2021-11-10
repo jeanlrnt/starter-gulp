@@ -7,21 +7,21 @@ const sass = require('gulp-dart-sass');
 const plumber = require('gulp-plumber');
 const imagemin = require('gulp-imagemin');
 const autoprefixer = require('gulp-autoprefixer');
-const sitemap = require('gulp-sitemap');
 const minifyJS = require('gulp-minify');
+const concat = require('gulp-concat');
 const browsersync = require('browser-sync').create();
 
 const distFolder = './dist/';
 
 // variables
-const srcFolder = './src/';
+const assetsFolder = './src/assets/';
 const paths = {
   html: {
     src: './src/**/*.html',
     dest: './dist/',
   },
   css: {
-    src: './src/assets/css/**/*.css',
+    src: [`${assetsFolder}css/reset.css`, `${assetsFolder}css/*.css`],
     dest: './dist/assets/css/',
   },
   scss: {
@@ -42,16 +42,6 @@ const paths = {
   },
 };
 
-function browserSyncDev() {
-  browsersync.init({
-    // BrowserSync
-    server: {
-      baseDir: srcFolder,
-    },
-    port: 3001,
-  });
-}
-
 function browserSync() {
   browsersync.init({
     // BrowserSync
@@ -65,16 +55,6 @@ function browserSync() {
 // Permet de supprimer le répertoire distFolder
 function clear() {
   return del([distFolder]);
-}
-
-function htmlDev() {
-  return (
-    gulp
-      .src(paths.html.src, { since: gulp.lastRun(htmlDev) })
-      .pipe(plumber())
-      .pipe(gulp.dest(paths.html.dest))
-      .pipe(browsersync.stream())
-  );
 }
 
 // Tâche permettant de minimifier les fichiers html et de les copier vers dist/
@@ -98,6 +78,7 @@ function css() {
       .pipe(plumber())
       .pipe(autoprefixer())
       .pipe(minifyCss())
+      .pipe(concat('style.min.css'))
       .pipe(gulp.dest(paths.css.dest))
       .pipe(browsersync.stream())
   );
@@ -109,7 +90,7 @@ function scss() {
     gulp
       .src(paths.scss.src)
       .pipe(plumber())
-      .pipe(sass({ outputStyle: 'compressed' }))
+      .pipe(sass())
       .pipe(gulp.dest(paths.scss.dest))
       .pipe(browsersync.stream())
   );
@@ -150,16 +131,6 @@ function js() {
   );
 }
 
-function sitemapGen() {
-  return (
-    gulp
-      .src(distFolder, { read: false })
-    // Remplacer https://www.xxx.com par l'URL du site
-      .pipe(sitemap({ siteUrl: 'https://www.jeanlaurent.fr' }))
-      .pipe(gulp.dest(distFolder))
-  );
-}
-
 function watchAll() {
   gulp.watch(paths.scss.src, scss);
   gulp.watch(paths.css.src, css);
@@ -168,25 +139,16 @@ function watchAll() {
   gulp.watch(paths.images.src, images);
 }
 
-// Tache permettant d’écouter les modifications en dev
-function watch() {
-  gulp.watch(paths.html.src, htmlDev);
-  watchAll();
-}
-
 // Idem watch() avec les images en plus pour le build
 function watchFiles() {
   gulp.watch(paths.html.src, html);
   watchAll();
 }
 
-const serie = gulp.series(clear, html, scss, css, js, images, font);
-const build = gulp.series(serie, sitemapGen, gulp.parallel(watchFiles, browserSync));
-
-const dev = gulp.series(clear, scss, gulp.parallel(watch, browserSyncDev));
+const serie = gulp.series(clear, scss, html, css, js, images, font);
+const build = gulp.series(serie, gulp.parallel(watchFiles, browserSync));
 
 // exports
 exports.clear = clear;
 exports.build = build;
-exports.dev = dev;
-exports.default = dev;
+exports.default = build;
