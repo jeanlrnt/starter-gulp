@@ -4,7 +4,7 @@
   "description": "",
   "main": "test.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "gulp": "gulp"
   },
   "keywords": [],
   "author": "",
@@ -31,6 +31,8 @@
   },
   "browserslist": [
     "last 2 version",
+    "not dead",
+    "> 0.2%",
     "IE 10"
   ]
 }

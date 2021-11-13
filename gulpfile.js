@@ -25,7 +25,7 @@ const paths = {
     dest: './dist/assets/css/',
   },
   scss: {
-    src: './src/assets/scss/**/*',
+    src: './src/assets/scss/normalize.scss',
     dest: './src/assets/css/',
   },
   images: {
@@ -74,7 +74,7 @@ function html() {
 function css() {
   return (
     gulp
-      .src(paths.css.src, { since: gulp.lastRun(css) })
+      .src(paths.css.src)
       .pipe(plumber())
       .pipe(autoprefixer())
       .pipe(minifyCss())
@@ -114,7 +114,7 @@ function images() {
 function font() {
   return (
     gulp
-      .src(paths.font.src, { since: gulp.lastRun(font) })
+      .src(paths.font.src)
       .pipe(plumber())
       .pipe(gulp.dest(paths.font.dest))
       .pipe(browsersync.stream())
@@ -125,7 +125,7 @@ function font() {
 function js() {
   return (
     gulp
-      .src(paths.js.src, { since: gulp.lastRun(js) })
+      .src(paths.js.src)
       .pipe(minifyJS())
       .pipe(gulp.dest(paths.js.dest))
       .pipe(browsersync.stream())

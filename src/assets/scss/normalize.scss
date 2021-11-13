@@ -1,3 +1,6 @@
+@import "colors";
+@import "variables";
+
 /* Regles generales */
 *, *:after, *:before {
   box-sizing: border-box;
@@ -6,18 +9,19 @@
 html {
   font-size: 62.5%;
 }
-body {
 
-  font-size: 1.4rem;            /* 14px par défaut */
-  /*font-family: 'Noto sans', sans-serif;*/
+body {
+  font-size: 1.4rem;/* 14px par défaut */
+  font-family: 'Noto sans', sans-serif;
 }
 
-a, a:hover, a:visited{                /* ATTENTION LES LIENS SONT BLANC DANS CE MODELE*/
-  color: #FFF;
+a, a:hover, a:visited {
+  color: $white;
   text-decoration: none;
 }
-img{
-  max-width:100%;
+
+img {
+  max-width: 100%;
   height: auto;
   vertical-align: middle;
 }
