@@ -8,6 +8,7 @@
     background-image: url("../img/wallpaper.jpg");
     background-size: cover;
     background-position-x: 80%;
+    user-select: none;
 }
 
 .presentation h1 {
@@ -18,6 +19,8 @@
 }
 
 .presentation h2 {
+    font-size: 2vw;
+    margin-top: 3vh;
     color: #54a9eb;
     text-shadow: #000000 1px 1px 0;
 }
