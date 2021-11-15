@@ -55,7 +55,7 @@ function browserSync() {
 
 // Permet de supprimer le répertoire distFolder
 function clear() {
-  return del([distFolder]);
+  return del([distFolder, `${assetsFolder}css/sass.css`]);
 }
 
 // Tâche permettant de minimifier les fichiers html et de les copier vers dist/
