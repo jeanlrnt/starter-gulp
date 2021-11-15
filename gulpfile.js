@@ -138,18 +138,14 @@ function js() {
   );
 }
 
-function watchAll() {
-  gulp.watch(paths.scss.src, scss);
-  gulp.watch(paths.css.src, css);
-  gulp.watch(paths.js.src, js);
-  gulp.watch(paths.font.src, font);
-  gulp.watch(paths.images.src, images);
-}
-
 // Idem watch() avec les images en plus pour le build
 function watchFiles() {
   gulp.watch(paths.html.src, html);
-  watchAll();
+  gulp.watch(paths.scss.src, scss);
+  gulp.watch(paths.js.src, js);
+  gulp.watch(paths.css.src, css);
+  gulp.watch(paths.font.src, font);
+  gulp.watch(paths.images.src, images);
 }
 
 const serie = gulp.series(clear, scss, html, css, js, images, font);
