@@ -7,7 +7,8 @@ const sass = require('gulp-dart-sass');
 const plumber = require('gulp-plumber');
 const imagemin = require('gulp-imagemin');
 const autoprefixer = require('gulp-autoprefixer');
-const minifyJS = require('gulp-minify');
+const sourcemaps = require('gulp-sourcemaps');
+const babel = require('gulp-babel');
 const concat = require('gulp-concat');
 const browsersync = require('browser-sync').create();
 
@@ -126,7 +127,12 @@ function js() {
   return (
     gulp
       .src(paths.js.src)
-      .pipe(minifyJS())
+      .pipe(sourcemaps.init())
+      .pipe(babel({
+        presets: ['@babel/preset-env'],
+      }))
+      .pipe(concat('all.js'))
+      .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(paths.js.dest))
       .pipe(browsersync.stream())
   );
