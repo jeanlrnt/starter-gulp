@@ -1,0 +1,5 @@
+@import "colors";
+
+@mixin shadow {
+  text-shadow: $black 1px 1px 0;
+}
