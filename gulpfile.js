@@ -22,11 +22,11 @@ const paths = {
     dest: './dist/',
   },
   css: {
-    src: [`${assetsFolder}css/reset.css`, `${assetsFolder}css/sass.css`, `${assetsFolder}css/*.css`],
+    src: [`${assetsFolder}css/sass.css`, `${assetsFolder}css/*.css`],
     dest: './dist/assets/css/',
   },
   scss: {
-    src: './src/assets/scss/normalize.scss',
+    src: './src/assets/scss/styles.scss',
     dest: './src/assets/css/',
   },
   images: {
