@@ -111,7 +111,7 @@ function images() {
   );
 }
 
-// Tâche permettant de minimifier les images et de les copier vers dist/assets/img/
+// Tâche permettant de minimifier les polices et de les copier vers dist/assets/fonts/
 function font() {
   return (
     gulp
