@@ -4,7 +4,7 @@
   "description": "",
   "main": "test.js",
   "scripts": {
-    "gulp": "gulp"
+    "watch": "gulp"
   },
   "type": "commonjs",
   "keywords": [],

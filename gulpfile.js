@@ -26,7 +26,7 @@ const paths = {
     dest: './dist/assets/css/',
   },
   scss: {
-    src: './src/assets/scss/styles.scss',
+    src: './src/assets/scss/index.scss',
     dest: './src/assets/css/',
   },
   images: {
